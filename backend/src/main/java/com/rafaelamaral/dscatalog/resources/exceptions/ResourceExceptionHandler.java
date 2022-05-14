@@ -22,6 +22,7 @@ public class ResourceExceptionHandler {
         error.setPath(request.getRequestURI());
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+
     }
 
 }
