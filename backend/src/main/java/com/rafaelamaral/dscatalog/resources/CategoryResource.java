@@ -35,7 +35,6 @@ public class CategoryResource {
         dto = categoryService.save(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}")
                     .buildAndExpand(dto.getId()).toUri();
-
         return ResponseEntity.created(uri).body(dto);
     }
 
@@ -48,7 +47,6 @@ public class CategoryResource {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id){
         categoryService.delete(id);
-
         return ResponseEntity.noContent().build();
     }
 
