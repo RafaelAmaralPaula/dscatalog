@@ -20,8 +20,8 @@ public class ProductResource {
 
     @GetMapping
     public ResponseEntity<Page<ProductDTO>> findAllPaged(Pageable pageable){
-        Page<ProductDTO> list = productService.findAllPaged(pageable);
-        return ResponseEntity.ok().body(list);
+        Page<ProductDTO> page = productService.findAllPaged(pageable);
+        return ResponseEntity.ok().body(page);
     }
 
     @GetMapping("/{id}")
