@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 
 
@@ -32,7 +33,7 @@ public class CategoryResource {
     }
 
     @PostMapping
-    public ResponseEntity<CategoryDTO> insert(@RequestBody CategoryDTO dto){
+    public ResponseEntity<CategoryDTO> insert(@Valid @RequestBody CategoryDTO dto){
         dto = categoryService.save(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}")
                     .buildAndExpand(dto.getId()).toUri();
@@ -40,7 +41,7 @@ public class CategoryResource {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CategoryDTO> update(@PathVariable Long id , @RequestBody CategoryDTO dto){
+    public ResponseEntity<CategoryDTO> update(@PathVariable Long id , @Valid @RequestBody CategoryDTO dto){
         dto = categoryService.update(id , dto);
         return ResponseEntity.ok().body(dto);
     }
